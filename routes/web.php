@@ -11,9 +11,19 @@
 |
 */
 
+Route::get('/', function () {
+    return view('home');
+});
 
 Route::get('/', 'PagesController@index');
 
 Route::get('/categories', 'CategoriesController@index');
 Auth::routes();
 
+Route::middleware('roles','Admin')->group(function () {
+    Route::resource('/admin/users','AdminPageUsersController');
+    Route::resource('/admin/items','ItemsController');
+    Route::view('/admin', 'AdministratorPages.admin')->name('admin');
+    Route::view('/admin/suppliers', 'AdministratorPages.suppliers')->name('adminSuppliers');
+    //Route::view('/admin/items', 'AdministratorPages.items')->name('adminItems');
+});

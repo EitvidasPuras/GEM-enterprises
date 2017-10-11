@@ -1,0 +1,21 @@
+.navbar{
+    border-radius: 1px;
+}
+
+#AdminCategory{
+    height: 450px;
+    display: block;
+    border: double;
+    border-width: 1px;
+    border-radius: 20px;
+}
+.centras {
+    padding-top: 50%;
+    text-align: center;
+    position: relative;
+    align-items: center;
+}
+
+#userShow{
+    margin: 10px;
+}
