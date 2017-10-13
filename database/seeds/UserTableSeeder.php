@@ -19,23 +19,26 @@ class UserTableSeeder extends Seeder
         $role_admin=Role::where('name','Admin')->first();
 
         $user= new User();
-        $user->name='Johaan';
-        $user->email='Johhn@gmail.com';
-        $user->password=bcrypt('John11');
+        $user->name='userTest';
+        $user->lastName='userTestinson';
+        $user->email='user@test.com';
+        $user->password=bcrypt('123456');
         $user->save();
         $user->roles()->attach($role_user);
 
         $supplier= new User();
-        $supplier->name='Joheeaae';
-        $supplier->email='Josss@gmail.com';
-        $supplier->password=bcrypt('ccc22c');
+        $supplier->name='supplierTest';
+        $supplier->lastName='supplierTestinson';
+        $supplier->email='supplier@test.com';
+        $supplier->password=bcrypt('123456');
         $supplier->save();
         $supplier->roles()->attach($role_supplier);
 
         $admin= new User();
-        $admin->name='AAAaa';
-        $admin->email='JohBBBhn@gmail.com';
-        $admin->password=bcrypt('aaaa33');
+        $admin->name='adminTest';
+        $admin->lastName='adminTestinson';
+        $admin->email='admin@test.com';
+        $admin->password=bcrypt('123456');
         $admin->save();
         $admin->roles()->attach($role_admin);
     }

@@ -13,17 +13,18 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('myStyle/style.css') }}" rel="stylesheet">
+
 </head>
 <body>
-    <div id="app">
-        @include('navbar')
-        <div class="container">
-            @include('messages')
-            @yield('content')
-        </div>
+<div id="app">
+    @include('navbar')
+    <div class="container">
+        @include('messages')
+        @yield('content')
     </div>
+</div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

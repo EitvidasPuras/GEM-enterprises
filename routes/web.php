@@ -12,17 +12,22 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect('/items/');
 });
 
-Route::get('/', 'PagesController@index');
+Route::get('/bestselling', 'BestsellingController@index');
 
-Route::get('/categories', 'CategoriesController@index');
+Route::get('/settings', 'SettingsController@index');
+Route::post('settings', 'SettingsController@changePassword');
+
+Route::resource('categories', 'CategoriesController');
+Route::resource('items', 'ItemsController');
+
 Auth::routes();
 
-Route::middleware('roles','Admin')->group(function () {
-    Route::resource('/admin/users','AdminPageUsersController');
-    Route::resource('/admin/items','ItemsController');
+Route::middleware('roles', 'Admin')->group(function () {
+    Route::resource('/admin/users', 'AdminPageUsersController');
+    Route::resource('/admin/items', 'ItemsController');
     Route::view('/admin', 'AdministratorPages.admin')->name('admin');
     Route::view('/admin/suppliers', 'AdministratorPages.suppliers')->name('adminSuppliers');
     //Route::view('/admin/items', 'AdministratorPages.items')->name('adminItems');

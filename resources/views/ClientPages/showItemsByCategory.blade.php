@@ -10,6 +10,7 @@
                     <div class="caption">
                         <h4 class="group inner list-group-item-heading">
                             {{$item->name}}</h4>
+                        <p>Category: {{$item->category->name}}</p>
                         <p class="group inner list-group-item-text">
                             {{$item->description}}</p>
                         <div class="row">
@@ -31,6 +32,6 @@
             </div>
         @endforeach
     @else
-        <h3 class="text-center">Store seems to be empty</h3>
+        <h3 class="text-center">There are no items in this category</h3>
     @endif
 @endsection

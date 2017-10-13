@@ -5,11 +5,11 @@
         @foreach($items as $item)
             <div class="item  col-xs-8 col-lg-4">
                 <div class="thumbnail">
-                    <a href="/items/{{$item->id}}"><img class="group list-group-image"
-                                                        src="http://placehold.it/400x250/000/fff" alt=""/></a>
+                    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt=""/>
                     <div class="caption">
-                        <h4 class="group inner list-group-item-heading">
-                            {{$item->name}}</h4>
+                        <h3 class="group inner list-group-item-heading">
+                            {{$item->name}}</h3>
+                        <p>Sold: {{$item->sold}}</p>
                         <p class="group inner list-group-item-text">
                             {{$item->description}}</p>
                         <div class="row">
@@ -30,7 +30,8 @@
                 </div>
             </div>
         @endforeach
+        {{$items->links()}}
     @else
-        <h3 class="text-center">Store seems to be empty</h3>
+        <h3>Store seems to be empty</h3>
     @endif
 @endsection

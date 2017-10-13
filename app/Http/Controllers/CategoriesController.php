@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Item;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -13,7 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('ClientPages.categories');
+        $categories = Category::all();
+        return view('ClientPages.categories')->with('categories', $categories);
     }
 
     /**
@@ -45,7 +48,8 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        return view('ClientPages.showItemsByCategory')->with('items', $category->items);
     }
 
     /**

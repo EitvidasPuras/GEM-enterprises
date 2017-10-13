@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Item;
 
-class ItemsController extends Controller
+class BestsellingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
-        return view('ClientPages.index')->with('items', $items);
+        $items = Item::orderBy('sold', 'desc')->paginate(10);
+        //$items = Item::all();
+        return view('ClientPages.bestselling')->with('items', $items);
     }
 
     /**
@@ -47,8 +48,7 @@ class ItemsController extends Controller
      */
     public function show($id)
     {
-        $item = Item::find($id);
-        return view('ClientPages.showItem')->with('item', $item);
+        //
     }
 
     /**

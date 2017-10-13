@@ -9,4 +9,9 @@ class Item extends Model
     protected $table = 'items';
     public $primaryKey = 'id';
     public $timestamps = true;
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
 }

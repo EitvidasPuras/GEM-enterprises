@@ -1,0 +1,52 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Change Password</div>
+                    <div class="panel-body">
+                        @if (Session::has('failure'))
+                            <div class="alert alert-danger">{!! Session::get('failure') !!}</div>
+                        @endif
+                        <form action="" method="post" role="form" class="form-horizontal">
+                            {{csrf_field()}}
+
+                            <div class="form-group{{ $errors->has('old') ? ' has-error' : '' }}">
+                                <label for="password" class="col-md-4 control-label">Old Password</label>
+
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control" name="old">
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                <label for="password" class="col-md-4 control-label">New Password</label>
+
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control" name="password">
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+
+                                <div class="col-md-6">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary form-control">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

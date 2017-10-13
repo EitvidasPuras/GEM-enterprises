@@ -1,13 +1,13 @@
-<!doctype html>
 @extends('layouts.app')
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{config('app.name', 'GEMShop')}}</title>
-</head>
-<body>
 
-</body>
-</html>
+@section('content')
+    @if(count($categories) > 0)
+        @foreach($categories as $category)
+            <div class="well">
+                <a href="/categories/{{$category->id}}"><h1>{{$category->name}}</h1></a>
+            </div>
+        @endforeach
+    @else
+        <h1>No categories found</h1>
+    @endif
+@endsection
