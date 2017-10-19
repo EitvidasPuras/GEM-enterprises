@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="./" class="btn btn-default">Go back</a>
+    <a href="{{route('admin')}}" class="btn btn-default">Go back</a>
     <h1>Users</h1>
     <div class="container">
 
@@ -24,20 +24,53 @@
                         <th>{{$user->created_at}}</th>
                         <th>{{$user->userRole()}}</th>
                         <th>
-                            <a href="users/{{$user->id}}/edit" class="btn btn-success">Edit</a>
+                            <a href="{{route('users.edit',$user->id)}}" class="btn btn-success">Edit</a>
                         </th>
                         <th>
-                            <button class="btn btn-danger">Remove</button>
+                            {{--{!! Form::open(['action'=>['AdminPageUsersController@destroy',$user->id],'method'=>'POST']) !!}
+                            {{Form::hidden('_method','DELETE')}}--}}
+                            <button type="button" name="delete" class="btn btn-danger" value="remove"
+                                    data-toggle="modal" data-target="#u{{$user->id}}">Remove
+                            </button>
+                            {{--{!! Form::close() !!}--}}
                         </th>
                     </tr>
                     <tr></tr>
-                    {{--<div id="userShow" class=".col-xs-12 .col-sm-6 .col-lg-8 btn-default">
-                            <label>{{$user->name}}</label>
-                            <label>{{$user->email}}</label>
-                        <small>Registered at {{$user->created_at}}</small>
-                    </div>--}}
-            @endforeach
+
+                @endforeach
             </table>
+            @foreach($users as $user)
+                <div class="modal fade" id="u{{$user->id}}" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Confirm</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Do you want to remove '{{$user->name}}'?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="row">
+                                    {!! Form::open(['action'=>['AdminPageUsersController@destroy',$user->id],'method'=>'POST']) !!}
+                                    {{--<form action="{{action('AdminPageUsersController@destroy',$user->id)}}" method="POST">--}}
+                                    {{Form::hidden('_method','DELETE')}}
+                                    {{--<input type="hidden" name="_method" value="DELETE"/>--}}
+                                    <input type="submit" name="DELETE" class="btn btn-success" value="Yes"/>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                    {{--</form>--}}
+                                    {{--<a href="users/{{$user->id}}" class="btn btn-success" data-method="DELETE">Yes</a>--}}
+                                    {{--<a href="{{ action('AdminPageUsersController@destroy', ['id' => $user->id]) }}">Yes</a>--}}
+                                    {!! Form::close() !!}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
             {{$users->links()}}
         @else
             <p>No Users Found</p>

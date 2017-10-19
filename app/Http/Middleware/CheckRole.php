@@ -9,22 +9,22 @@ class CheckRole
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if($request->user()=== null){
-            return response("Insufficient permissions",401);
+        if ($request->user() === null) {
+            return response("<h2>Page Not Found!</h2>", 401);
         }
         $actions = $request->route()->getAction();
-        $roles=isset($actions['roles']) ? $actions['roles'] : null;
+        $roles = isset($actions['roles']) ? $actions['roles'] : null;
 
-        if($request->user()->hasAnyRole($roles) || !$roles){
+        if ($request->user()->hasAnyRole($roles)) {
             return $next($request);
         }
-        return response("Insufficient permissions",401);
+        return response("<h2>Page Not Found!</h2>", 401);
 
     }
 }

@@ -14,4 +14,9 @@ class Item extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function categoryName()
+    {
+        echo $this->category()->value('name');
+    }
 }

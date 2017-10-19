@@ -15,7 +15,7 @@ Route::get('/', function () {
     return redirect('/items/');
 });
 
-Route::get('/bestselling', 'BestsellingController@index');
+Route::get('/bestselling', 'BestsellingController@index')->name('bestselling');
 Route::get('/shoppingcart', 'ShoppingCartController@index');
 
 Route::get('/settings', 'SettingsController@index');
@@ -28,10 +28,11 @@ Route::resource('items', 'ItemsController');
 
 Auth::routes();
 
-Route::middleware('roles', 'Admin')->group(function () {
-    Route::resource('/admin/users', 'AdminPageUsersController');
-    Route::resource('/admin/items', 'ItemsController');
-    Route::view('/admin', 'AdministratorPages.admin')->name('admin');
-    Route::view('/admin/suppliers', 'AdministratorPages.suppliers')->name('adminSuppliers');
-    //Route::view('/admin/items', 'AdministratorPages.items')->name('adminItems');
+Route::middleware('roles')->group(function () {
+    Route::group(['roles' => 'Admin'], function () {
+        Route::resource('/admin/items', 'AdminPageItemsController');
+        Route::resource('/admin/users', 'AdminPageUsersController');
+        Route::view('/admin/suppliers', 'AdministratorPages.suppliers')->name('adminSuppliers');
+        Route::view('/admin', 'AdministratorPages.admin')->name('admin');
+    });
 });

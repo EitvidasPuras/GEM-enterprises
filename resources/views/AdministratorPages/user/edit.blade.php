@@ -10,18 +10,18 @@
     {{ method_field('PUT') }}
     <div class="form-group">
         <label>Name</label>
-        <input type="text" class="form-control" name="name" value="{{$user->name}}">
+        <input type="text" class="form-control" name="name" value="{{$user->name}}" readonly>
     </div>
     <div class="form-group">
         <label>Email</label>
-        <input type="text" class="form-control" name="email" value="{{$user->email}}">
+        <input type="text" class="form-control" name="email" value="{{$user->email}}" readonly>
     </div>
     <div class="form-group">
         <label>Role</label>
         <br>
-        <label><input type="checkbox" name="role_user" {{$user->hasRole('User') ? 'checked' : ''}}>User</label>
-        <label><input type="checkbox" name="role_supplier" {{$user->hasRole('Supplier') ? 'checked' : ''}}>Supplier</label>
-        <label><input type="checkbox" name="role_admin" {{$user->hasRole('Admin') ? 'checked' : ''}}>Admin</label>
+        <label><input type="radio" value="user" name="role" {{$user->hasRole('User') ? 'checked' : ''}}>User</label>
+        <label><input type="radio" value="supplier" name="role" {{$user->hasRole('Supplier') ? 'checked' : ''}}>Supplier</label>
+        <label><input type="radio" value="admin" name="role" {{$user->hasRole('Admin') ? 'checked' : ''}}>Admin</label>
     </div>
     {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}

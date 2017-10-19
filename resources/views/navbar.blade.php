@@ -24,8 +24,8 @@
             </ul>
 
             <ul class="nav navbar-nav">
-                <li><a href="/categories">Categories</a></li>
-                <li><a href="/bestselling">Bestselling</a></li>
+                <li><a href="{{route('categories.index')}}">Categories</a></li>
+                <li><a href="{{route('bestselling')}}">Bestselling</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -43,7 +43,6 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-expanded="false">
                             <span class="glyphicon glyphicon-user"></span>
-
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
