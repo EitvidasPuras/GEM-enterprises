@@ -4,7 +4,7 @@
     @if(count($categories) > 0)
         @foreach($categories as $category)
             <div class="well">
-                <a href="/categories/{{$category->id}}"><h1>{{$category->name}}</h1></a>
+                <a href="{{route('categories.show', $category->id)}}"><h1>{{$category->name}}</h1></a>
             </div>
         @endforeach
     @else

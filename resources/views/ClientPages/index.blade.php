@@ -1,6 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <form action="{{route("search")}}">
+        {{csrf_field()}}
+        <div style="margin-bottom: 16px" class="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control input-lg" name="q"
+                                   placeholder="Search for products by their name, description or price"/>
+                            <span class="input-group-btn">
+                        <button style="background-color: black" class="btn btn-lg" type="submit">
+                            <i style="color: white" class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
     @if(count($items) > 0)
         @foreach($items as $item)
             <div class="item  col-xs-8 col-lg-4">
@@ -15,16 +38,9 @@
                         <div class="row">
                             <div class="col-xs-13 col-md-7">
                                 <p class="lead">
-                                    <?php
-                                    echo number_format((float)$item->price, 2, '.', ''), "€";
-                                    ?>
+                                    {{ number_format($item->price, 2) }}€
                                 </p>
                             </div>
-                            @if(Auth::check())
-                                <div class="col-xs-5 col-md-2">
-                                    <a class="btn btn-success" href="">Add to cart</a>
-                                </div>
-                            @endif
                         </div>
                     </div>
                 </div>

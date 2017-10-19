@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Item;
-use Illuminate\Support\Facades\DB;
 
-class ItemsController extends Controller
+class ShoppingCartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
-        return view('ClientPages.index')->with('items', $items);
+        return view("ClientPages/shoppingcart");
     }
 
     /**
@@ -40,17 +37,6 @@ class ItemsController extends Controller
         //
     }
 
-    public function search(Request $request)
-    {
-        $query = $request->get("q");
-        $items = DB::table('items')->where('name', 'LIKE', '%' . $query . '%')
-            ->orwhere('description', 'LIKE', '%' . $query . '%')
-            ->orwhere('price', 'LIKE', '%' . $query . '%')
-            ->get();
-
-        return view('ClientPages.index')->with('items', $items);
-    }
-
     /**
      * Display the specified resource.
      *
@@ -59,8 +45,7 @@ class ItemsController extends Controller
      */
     public function show($id)
     {
-        $item = Item::find($id);
-        return view('ClientPages.showItem')->with('item', $item);
+        //
     }
 
     /**

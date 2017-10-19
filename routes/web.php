@@ -16,12 +16,15 @@ Route::get('/', function () {
 });
 
 Route::get('/bestselling', 'BestsellingController@index');
+Route::get('/shoppingcart', 'ShoppingCartController@index');
 
 Route::get('/settings', 'SettingsController@index');
 Route::post('settings', 'SettingsController@changePassword');
 
 Route::resource('categories', 'CategoriesController');
+Route::get('items/search', 'ItemsController@search')->name('search');
 Route::resource('items', 'ItemsController');
+
 
 Auth::routes();
 
