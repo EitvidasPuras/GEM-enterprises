@@ -79,14 +79,16 @@ class AdminPageUsersController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->save();
+
         $user->roles()->detach();
         if ($request['role'] == "admin") {
             $user->roles()->attach(Role::where('name', 'Admin')->first());
-        }
-        else if ($request['role'] == "user") {
+        } else if ($request['role'] == "user") {
             $user->roles()->attach(Role::where('name', 'User')->first());
-        }
-        else if ($request['role'] == "supplier") {
+        } else if ($request['role'] == "supplier") {
             $user->roles()->attach(Role::where('name', 'Supplier')->first());
         }
         return redirect()->route('users.index')->with('success', 'User Updated');
@@ -100,7 +102,7 @@ class AdminPageUsersController extends Controller
      */
     public function destroy($id)
     {
-        $user=User::find($id);
+        $user = User::find($id);
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User Removed');
     }

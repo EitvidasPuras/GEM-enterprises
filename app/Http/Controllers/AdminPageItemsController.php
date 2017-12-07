@@ -98,7 +98,12 @@ class AdminPageItemsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Item::find($id);
+        $categories = Category::all();
+        // $user_role_id = DB::table('user_role')->where('user_id', $id)->value('role_id');
+        //$role = DB::table('roles')->where('id', $user_role_id)->first();
+
+        return view('AdministratorPages.item.edit', ['categories' => $categories, 'item' => $item]);
     }
 
     /**
@@ -110,7 +115,44 @@ class AdminPageItemsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'price' => 'required',
+            'amount' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
+        ]);
+
+        //Cover Image Upload
+        if ($request->hasFile('cover_image')) {
+            $fileNameWithExtension = $request->file('cover_image')->getClientOriginalName();
+            //Get file name
+            $fileName = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
+            //Get extension
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noImage.jpg';
+        }
+
+        //Update Item
+        $item = Item::find($id);
+        $item->name = $request['name'];
+        $item->price = $request['price'];
+        $item->amount = $request['amount'];
+        $item->category_id = $request['category'];
+        //$item->supplier_id = "0";
+        $item->description = $request['description'];
+        if ($fileNameToStore != "noImage.jpg") {
+            $item->cover_image = $fileNameToStore;
+        }
+        $item->save();
+
+        return redirect()->route('items.index')->with('success', 'Product got edited');
     }
 
     /**
@@ -121,6 +163,8 @@ class AdminPageItemsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Item::find($id);
+        $item->delete();
+        return redirect()->route('items.index')->with('success', 'Item Removed');
     }
 }

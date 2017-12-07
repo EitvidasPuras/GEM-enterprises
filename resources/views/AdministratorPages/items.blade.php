@@ -33,12 +33,9 @@
                             <a href="{{route('items.edit',$item->id)}}" class="btn btn-success">Edit</a>
                         </th>
                         <th>
-                            {{--{!! Form::open(['action'=>['AdminPageUsersController@destroy',$user->id],'method'=>'POST']) !!}
-                            {{Form::hidden('_method','DELETE')}}--}}
                             <button type="button" name="delete" class="btn btn-danger" value="remove"
                                     data-toggle="modal" data-target="#u{{$item->id}}">Remove
                             </button>
-                            {{--{!! Form::close() !!}--}}
                         </th>
                     </tr>
                     <tr></tr>
@@ -60,14 +57,9 @@
                             <div class="modal-footer">
                                 <div class="row">
                                     {!! Form::open(['action'=>['AdminPageItemsController@destroy',$item->id],'method'=>'POST']) !!}
-                                    {{--<form action="{{action('AdminPageUsersController@destroy',$user->id)}}" method="POST">--}}
                                     {{Form::hidden('_method','DELETE')}}
-                                    {{--<input type="hidden" name="_method" value="DELETE"/>--}}
                                     <input type="submit" name="DELETE" class="btn btn-success" value="Yes"/>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                                    {{--</form>--}}
-                                    {{--<a href="users/{{$user->id}}" class="btn btn-success" data-method="DELETE">Yes</a>--}}
-                                    {{--<a href="{{ action('AdminPageUsersController@destroy', ['id' => $user->id]) }}">Yes</a>--}}
                                     {!! Form::close() !!}
 
                                 </div>

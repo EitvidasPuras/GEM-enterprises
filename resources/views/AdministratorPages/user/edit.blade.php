@@ -10,11 +10,11 @@
     {{ method_field('PUT') }}
     <div class="form-group">
         <label>Name</label>
-        <input type="text" class="form-control" name="name" value="{{$user->name}}" readonly>
+        <input type="text" class="form-control" name="name" value="{{$user->name}}">
     </div>
     <div class="form-group">
         <label>Email</label>
-        <input type="text" class="form-control" name="email" value="{{$user->email}}" readonly>
+        <input type="text" class="form-control" name="email" value="{{$user->email}}">
     </div>
     <div class="form-group">
         <label>Role</label>
