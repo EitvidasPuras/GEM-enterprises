@@ -29,14 +29,20 @@
                 Sold: {{$item->sold}}
             </h4>
 
+            <form action="" class="input">
+                <input name="countProducts" class="input-number" type="number">
+            </form>
+
             <div>
                 @if(Auth::check())
-                    <div class="star-rating">
-                        <span onclick="updateRatings(5)">☆</span>
-                        <span onclick="updateRatings(4)">☆</span>
-                        <span onclick="updateRatings(3)">☆</span>
-                        <span onclick="updateRatings(2)">☆</span>
-                        <span onclick="updateRatings(1)">☆</span>
+                    <div id="displayMessage">
+                        <div class="star-rating">
+                            <span onclick="updateRatings(5)">☆</span>
+                            <span onclick="updateRatings(4)">☆</span>
+                            <span onclick="updateRatings(3)">☆</span>
+                            <span onclick="updateRatings(2)">☆</span>
+                            <span onclick="updateRatings(1)">☆</span>
+                        </div>
                     </div>
                     <a style="float: right" class="btn btn-success" href="">Add to cart</a>
                 @endif
@@ -53,6 +59,8 @@
                 url: '/items/rating/{{$item->id}}/' + rating,
                 method: 'POST'
             });
+
+            document.getElementById("displayMessage").innerHTML = "<br>Thank you for your rating!";
         }
     </script>
 
