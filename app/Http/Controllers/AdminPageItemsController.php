@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Item;
 use App\Category;
-use Illuminate\Http\Response;
+use App\Item;
+use Illuminate\Http\Request;
 
 class AdminPageItemsController extends Controller
 {
@@ -69,7 +68,7 @@ class AdminPageItemsController extends Controller
         $item->price = $request['price'];
         $item->amount = $request['amount'];
         $item->category_id = $request['category'];
-        $item->supplier_id = "2";
+        $item->supplier_id = "0";
         $item->description = $request['description'];
         $item->cover_image = $fileNameToStore;
         $item->sold = "0";
@@ -145,7 +144,6 @@ class AdminPageItemsController extends Controller
         $item->price = $request['price'];
         $item->amount = $request['amount'];
         $item->category_id = $request['category'];
-        //$item->supplier_id = "0";
         $item->description = $request['description'];
         if ($fileNameToStore != "noImage.jpg") {
             $item->cover_image = $fileNameToStore;

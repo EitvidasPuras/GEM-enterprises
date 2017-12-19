@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="padding">{{$item->name}}</h1>
+    <h1 class="padding" style="word-break: break-all">{{$item->name}}</h1>
     <div class="item">
 
         <div class="col-md-5 col-sm-5">
             @if($item->cover_image=="")
                 <img class="showItem img-rounded"
-                     src="http://placehold.it/400x250/000/fff" alt=""/>
+                     src="http://placehold.it/400x250/000/fff" alt="" style="height: 250px; width: 400px"/>
             @else
-                <img class="showItem img-rounded" src="{{asset("storage/cover_images/$item->cover_image")}}">
+                <img class="showItem img-rounded" src="{{asset("storage/cover_images/$item->cover_image")}}"
+                     style="height: 250px; width: 400px">
             @endif
         </div>
         <div class="col-md-7 col-sm-7">

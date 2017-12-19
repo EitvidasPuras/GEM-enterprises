@@ -22,7 +22,7 @@
                 @foreach($items as $item)
                     <tr class="btn-default">
                         <th>{{$item->id}}</th>
-                        <th>{{$item->name}}</th>
+                        <th style="word-break: break-all">{{$item->name}}</th>
                         <th><?php
                             echo number_format((float)$item->price, 2, '.', ''), " €";
                             ?>

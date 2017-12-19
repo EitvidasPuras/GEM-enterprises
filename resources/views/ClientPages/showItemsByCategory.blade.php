@@ -5,21 +5,22 @@
         @foreach($items as $item)
             <div class="item  col-xs-8 col-lg-4">
                 <div class="thumbnail">
-                    <a href="{{route('items.show', $item->id)}}">
+                    <a href="{{route('user.items.show', $item->id)}}">
                         @if($item->cover_image=="")
                             <img class="group list-group-image"
-                                 src="http://placehold.it/400x250/000/fff" alt=""/>
+                                 src="http://placehold.it/400x250/000/fff" alt="" style="height: 250px; width: 400px"/>
                         @else
                             <img class="group list-group-image"
-                                 src="{{asset("storage/cover_images/$item->cover_image")}}">
+                                 src="{{asset("storage/cover_images/$item->cover_image")}}"
+                                 style="height: 250px; width: 400px">
                         @endif
                     </a>
                     <div class="caption">
-                        <h4 class="group inner list-group-item-heading">
-                            {{$item->name}}</h4>
+                        <h4 class="group inner list-group-item-heading" style="word-break: break-all">
+                            {{str_limit($item->name,35,"...")}}</h4>
                         <p>Category: {{$item->category->name}}</p>
                         <p class="group inner list-group-item-text">
-                            {{$item->description}}</p>
+                            {{str_limit($item->description,40,"...")}}</p>
                         <div class="row">
                             <div class="col-xs-13 col-md-7">
                                 <p class="lead">
