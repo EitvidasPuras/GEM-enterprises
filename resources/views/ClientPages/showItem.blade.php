@@ -5,7 +5,12 @@
     <div class="item">
 
         <div class="col-md-5 col-sm-5">
-            <img class="showItem img-rounded" src="http://placehold.it/400x250/000/fff" alt=""/>
+            @if($item->cover_image=="")
+                <img class="showItem img-rounded"
+                     src="http://placehold.it/400x250/000/fff" alt=""/>
+            @else
+                <img class="showItem img-rounded" src="{{asset("storage/cover_images/$item->cover_image")}}">
+            @endif
         </div>
         <div class="col-md-7 col-sm-7">
             <h4 class="text-center">{{$item->description}}</h4>

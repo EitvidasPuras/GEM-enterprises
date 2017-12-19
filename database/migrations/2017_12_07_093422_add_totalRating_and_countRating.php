@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class AddTotalRatingAndCountRating extends Migration
 {
@@ -14,10 +13,10 @@ class AddTotalRatingAndCountRating extends Migration
     public function up()
     {
         Schema::table('items', function ($table){
-            $table->double('totalRating');
+            $table->double('totalRating')->default(0);
         });
         Schema::table('items', function ($table){
-            $table->integer('countRating');
+            $table->integer('countRating')->default(0);
         });
     }
 

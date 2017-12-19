@@ -5,8 +5,15 @@
         @foreach($items as $item)
             <div class="item  col-xs-8 col-lg-4">
                 <div class="thumbnail">
-                    <a href="{{route('items.show', $item->id)}}"><img class="group list-group-image"
-                                                                      src="http://placehold.it/400x250/000/fff" alt=""/></a>
+                    <a href="{{route('items.show', $item->id)}}">
+                        @if($item->cover_image=="")
+                            <img class="group list-group-image"
+                                 src="http://placehold.it/400x250/000/fff" alt=""/>
+                        @else
+                            <img class="group list-group-image"
+                                 src="{{asset("storage/cover_images/$item->cover_image")}}">
+                        @endif
+                    </a>
                     <div class="caption">
                         <h3 class="group inner list-group-item-heading">
                             {{$item->name}}</h3>
