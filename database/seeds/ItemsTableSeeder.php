@@ -21,6 +21,8 @@ class ItemsTableSeeder extends Seeder
         $item->description='the description of this item is awesome';
         $item->cover_image='';
         $item->sold=2;
+        $item->totalRating=0;
+        $item->countRating=0;
         $item->save();
 
         $item = new Item();
@@ -32,6 +34,8 @@ class ItemsTableSeeder extends Seeder
         $item->description='the description of this item is also awesome';
         $item->cover_image='';
         $item->sold=4;
+        $item->totalRating=0;
+        $item->countRating=0;
         $item->save();
 
         $item = new Item();
@@ -43,6 +47,8 @@ class ItemsTableSeeder extends Seeder
         $item->description='the description of this item is not that awesome';
         $item->cover_image='';
         $item->sold=3;
+        $item->totalRating=0;
+        $item->countRating=0;
         $item->save();
     }
 }
