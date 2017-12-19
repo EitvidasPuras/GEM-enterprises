@@ -23,6 +23,9 @@ Route::post('settings', 'SettingsController@changePassword');
 
 Route::resource('categories', 'CategoriesController');
 Route::get('items/search', 'ItemsController@search')->name('search');
+
+Route::post('items/rating/{id}/{rating}', 'ItemsController@addRating')->name('productRating');
+
 Route::resource('items', 'ItemsController', ['as' => 'user']);
 
 

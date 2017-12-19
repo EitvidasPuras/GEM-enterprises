@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class ItemsController extends Controller
@@ -38,6 +39,16 @@ class ItemsController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function addRating($id, $rating)
+    {
+        DB::table('items')->where('id', $id)
+            ->increment('totalRating', $rating);
+
+        DB::table('items')->where('id', $id)
+            ->increment('countRating');
+        return new Response();
     }
 
     public function search(Request $request)

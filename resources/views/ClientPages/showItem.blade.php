@@ -5,7 +5,7 @@
     <div class="item">
 
         <div class="col-md-5 col-sm-5">
-        <img class="showItem img-rounded" src="http://placehold.it/400x250/000/fff" alt=""/>
+            <img class="showItem img-rounded" src="http://placehold.it/400x250/000/fff" alt=""/>
         </div>
         <div class="col-md-7 col-sm-7">
             <h4 class="text-center">{{$item->description}}</h4>
@@ -24,21 +24,30 @@
             </h4>
 
             <div>
-                <div class="star-rating">
-
-                    <span>☆</span>
-                    <span>☆</span>
-                    <span>☆</span>
-                    <span>☆</span>
-                    <span>☆</span>
-                </div>
                 @if(Auth::check())
+                    <div class="star-rating">
+                        <span onclick="updateRatings(5)">☆</span>
+                        <span onclick="updateRatings(4)">☆</span>
+                        <span onclick="updateRatings(3)">☆</span>
+                        <span onclick="updateRatings(2)">☆</span>
+                        <span onclick="updateRatings(1)">☆</span>
+                    </div>
                     <a style="float: right" class="btn btn-success" href="">Add to cart</a>
                 @endif
             </div>
         </div>
     </div>
 
-
+    <script>
+        function updateRatings(rating) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/items/rating/{{$item->id}}/' + rating,
+                method: 'POST'
+            });
+        }
+    </script>
 
 @endsection
