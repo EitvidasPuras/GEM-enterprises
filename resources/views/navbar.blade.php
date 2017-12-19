@@ -51,6 +51,11 @@
                                     <a href="{{route('admin')}}">Admin panel</a>
                                 </li>
                             @endif
+                            @if(Auth::user()->hasRole('Supplier'))
+                                <li>
+                                    <a href="{{route('supplier_main')}}">Supplier panel</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="{{route('settings')}}">Settings</a>
                             </li>
