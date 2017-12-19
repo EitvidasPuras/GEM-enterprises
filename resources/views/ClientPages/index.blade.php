@@ -28,7 +28,7 @@
         @foreach($items as $item)
             <div class="item  col-xs-8 col-lg-4">
                 <div class="thumbnail">
-                    <a href="/items/{{$item->id}}"><img class="group list-group-image"
+                    <a href="{{route('user.items.show', $item->id)}}"><img class="group list-group-image"
                                                         src="http://placehold.it/400x250/000/fff" alt=""/></a>
                     <div class="caption">
                         <h4 class="group inner list-group-item-heading">

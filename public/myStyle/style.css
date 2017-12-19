@@ -19,3 +19,44 @@
 #userShow{
     margin: 10px;
 }
+
+h1.padding {
+    padding: inherit;
+}
+
+img.showItem {
+    width: 100%;
+    max-width: 400px;
+}
+
+.star-rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: left;
+    color: #ababab;
+    font-size: 30px;
+    position: relative;
+}
+
+.star-rating > span:hover:before,
+.star-rating > span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+    color: #000000;
+}
+
+.rating:hover .rating-star:hover,
+.rating:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    color: blue;
+}
+
+.rating-star,
+.rating:hover .rating-star {
+    position: relative;
+    float: right;
+    display: block;
+    width: 16px;
+    height: 16px;
+    color: red;
+}

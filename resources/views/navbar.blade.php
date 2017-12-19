@@ -13,7 +13,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                {{ config('app.name', 'GEMShop') }}
             </a>
         </div>
 
@@ -36,7 +36,7 @@
                 <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li>
-                        <a href="/shoppingcart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping
+                        <a href="{{ route('shoppingcart') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping
                             cart</a>
                     </li>
                     <li class="dropdown">
@@ -52,7 +52,7 @@
                                 </li>
                             @endif
                             <li>
-                                <a href="/settings">Settings</a>
+                                <a href="{{route('settings')}}">Settings</a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"

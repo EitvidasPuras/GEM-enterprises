@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Item;
 
 class ShoppingCartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,8 @@ class ShoppingCartController extends Controller
      */
     public function index()
     {
-        return view("ClientPages/shoppingcart");
+        $items = Item::orderBy('id', 'asc')->paginate(10);
+        return view("ClientPages/shoppingcart")->with('items', $items);
     }
 
     /**

@@ -16,14 +16,14 @@ Route::get('/', function () {
 });
 
 Route::get('/bestselling', 'BestsellingController@index')->name('bestselling');
-Route::get('/shoppingcart', 'ShoppingCartController@index');
+Route::get('/shoppingcart', 'ShoppingCartController@index')->name('shoppingcart');
 
-Route::get('/settings', 'SettingsController@index');
+Route::get('/settings', 'SettingsController@index')->name('settings');
 Route::post('settings', 'SettingsController@changePassword');
 
 Route::resource('categories', 'CategoriesController');
 Route::get('items/search', 'ItemsController@search')->name('search');
-Route::resource('items', 'ItemsController');
+Route::resource('items', 'ItemsController', ['as' => 'user']);
 
 
 Auth::routes();
