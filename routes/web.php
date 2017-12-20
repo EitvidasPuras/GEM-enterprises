@@ -44,9 +44,12 @@ Route::middleware('roles')->group(function () {
     Route::group(['roles' => 'Supplier'], function () {
         Route::get('/supplier', 'SupplierController@index')->name('supplier_main');
         Route::get('/supplier/profile', 'SupplierProfileController@index')->name('supplier_profile');
+        Route::get('/supplier/message', 'SupplierContactController@index')->name('supplier_message');
         Route::post('/supplier/profile/update', 'SupplierProfileController@storeProfileInfo')->name('supplier_profile_update');
+        Route::post('/supplier/message/send', 'SupplierContactController@sendMessage');
         //Route::get('/supplier/items', 'SupplierController@items')->name('supplier_items');
         Route::resource('/supplier/items', 'SupplierItemsController', ['as' => 'supplier']);
+
 
     });
 });
