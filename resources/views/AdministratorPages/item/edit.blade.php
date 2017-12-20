@@ -60,7 +60,7 @@
     <div class="form-group row">
         <label class="control-label col-sm-1">Sold</label>
         <div class="col-sm-3">
-            <input type="text" class="form-control" name="price" value="{{$item->sold}}" readonly>
+            <input type="text" class="form-control" name="sold" value="{{$item->sold}}" readonly>
         </div>
     </div>
     <div class="form-group">
