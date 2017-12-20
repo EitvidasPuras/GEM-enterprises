@@ -29,9 +29,15 @@
                 Sold: {{$item->sold}}
             </h4>
 
-            <form action="" class="input">
-                <input name="countProducts" class="input-number" type="number">
-            </form>
+            @if(Auth::check())
+            <div>
+
+                <form action="" class="input">
+                    <input name="countProducts" class="input-number" type="number">
+                </form>
+            </div>
+            @endif
+
 
             <div>
                 @if(Auth::check())
@@ -59,7 +65,6 @@
                 url: '/items/rating/{{$item->id}}/' + rating,
                 method: 'POST'
             });
-
             document.getElementById("displayMessage").innerHTML = "<br>Thank you for your rating!";
         }
     </script>
