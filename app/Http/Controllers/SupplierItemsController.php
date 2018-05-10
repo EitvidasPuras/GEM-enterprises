@@ -55,7 +55,7 @@ class SupplierItemsController extends Controller
             //Filename to store
             $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
 
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('cover_images', $fileNameToStore);
         } else {
             $fileNameToStore = 'noImage.jpg';
         }
@@ -131,7 +131,7 @@ class SupplierItemsController extends Controller
             //Filename to store
             $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
 
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('cover_images', $fileNameToStore);
         } else {
             $fileNameToStore = 'noImage.jpg';
         }
